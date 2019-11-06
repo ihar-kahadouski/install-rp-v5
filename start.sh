@@ -15,13 +15,16 @@ function prepareSourceCode() {
 }
 
 prepareSourceCode "migrations" "master"
-prepareSourceCode "service-authorization" "spb4"
-prepareSourceCode "service-index" "v5"
-prepareSourceCode "service-api" "ps-migrations"
-prepareSourceCode "service-ui" "v5"
+prepareSourceCode "service-authorization" "develop"
+prepareSourceCode "service-index" "master"
+prepareSourceCode "service-api" "develop"
+prepareSourceCode "service-ui" "develop"
+prepareSourceCode "service-analyzer" "master"
 
 if [ "$1" = "rebuild" ]; then
     docker-compose up -d --no-deps --build
 else
     docker-compose up -d
 fi
+
+read -p "Press enter to continue"

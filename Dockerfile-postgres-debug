@@ -1,0 +1,12 @@
+FROM postgres:11
+
+ENV PG_MAJOR 11
+ENV PG_VERSION 11.5-3.pgdg90+1
+
+COPY enable-debug.sh /docker-entrypoint-initdb.d/enable-debug.sh
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+  postgresql-$PG_MAJOR-pldebugger
+
+EXPOSE 5432
